@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:metamask_login_blog/ui/features/metamask_login_screen.dart';
-import 'package:metamask_login_blog/utils/constants/assets.dart';
+
+
+import '../../utils/constants/assets.dart';
+import 'metamask_login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:metamask_login_blog/ui/screens/profile.dart';
-import 'package:metamask_login_blog/services/services.dart';
-import 'package:metamask_login_blog/ui/features/bottom_navigation.dart';
-import 'package:metamask_login_blog/ui/features/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wallet_app/services/services.dart';
+import 'package:wallet_app/ui/features/bottom_navigation.dart';
+import 'package:wallet_app/ui/features/splash_screen.dart';
+import 'package:wallet_app/ui/screens/profile.dart';
 
 import 'bloc/metamask_auth_bloc.dart';
 import 'ui/screens/order.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       create: (context) => MetaMaskAuthBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'MetaMask Login Demo',
+        title: 'MetaMask Wallet',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,

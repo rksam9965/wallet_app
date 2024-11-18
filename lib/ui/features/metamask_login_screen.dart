@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:metamask_login_blog/bloc/metamask_auth_bloc.dart';
-import 'package:metamask_login_blog/bloc/wallet_state.dart';
-import 'package:metamask_login_blog/ui/features/widgets/custom/other_custom_widgets.dart';
-import 'package:metamask_login_blog/utils/constants/app_constants.dart';
-import 'package:metamask_login_blog/ui/features/widgets/custom/show_snack_bar.dart';
-import 'package:metamask_login_blog/ui/features/widgets/custom/nsalert_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wallet_app/ui/features/widgets/custom/nsalert_dialog.dart';
+import 'package:wallet_app/ui/features/widgets/custom/other_custom_widgets.dart';
+import 'package:wallet_app/ui/features/widgets/custom/show_snack_bar.dart';
+import '../../bloc/metamask_auth_bloc.dart';
 import '../../bloc/wallet_event.dart';
+import '../../bloc/wallet_state.dart';
 import 'bottom_navigation.dart';
 
 class MetaMaskLoginScreen extends StatefulWidget {

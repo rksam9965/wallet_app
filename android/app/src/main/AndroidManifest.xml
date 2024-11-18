@@ -10,7 +10,7 @@
      
     </queries> 
     <application
-        android:label="metamask_login_blog"
+        android:label="WalletConnectApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

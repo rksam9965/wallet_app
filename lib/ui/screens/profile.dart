@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:metamask_login_blog/ui/screens/recent.dart';
-import 'package:metamask_login_blog/ui/features/widgets/total_wallet_bal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wallet_app/ui/screens/recent.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';
+
+import '../features/widgets/total_wallet_bal.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);

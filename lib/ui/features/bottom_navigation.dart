@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:metamask_login_blog/ui/screens/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/order.dart';
+import '../screens/profile.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override

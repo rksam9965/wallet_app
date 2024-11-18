@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:metamask_login_blog/bloc/wallet_event.dart';
-import 'package:metamask_login_blog/bloc/wallet_state.dart';
+import 'package:wallet_app/bloc/wallet_event.dart';
+import 'package:wallet_app/bloc/wallet_state.dart';
+
 import 'package:walletconnect_flutter_v2/apis/sign_api/models/session_models.dart';
 import 'package:walletconnect_flutter_v2/apis/sign_api/models/sign_client_models.dart';
 import 'package:walletconnect_flutter_v2/apis/utils/namespace_utils.dart';
