@@ -47,12 +47,10 @@ class TotalWalletBalance extends StatelessWidget {
                        Radius.circular(5),
                      ),
                    ),
-                   child: Expanded(
-                    child: Center(
-                      child: Text(  walletAddress,style: TextStyle(fontSize: 9,fontWeight:FontWeight.bold,color: Colors.white),
-                      ),
-                    ),
-                                   ),
+                   child: Center(
+                     child: Text(  walletAddress,style: TextStyle(fontSize: 9,fontWeight:FontWeight.bold,color: Colors.white),
+                     ),
+                   ),
                  ),
               ],
             ),

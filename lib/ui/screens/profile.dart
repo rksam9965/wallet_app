@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -89,6 +90,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  void showAlertDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text('Are you sure you want to sign out?', textScaleFactor: 1),
+        actions: <Widget>[
+          CupertinoDialogAction(
+            onPressed: () {
+              _logout();
+            },
+            child: const Text('Yes', style: TextStyle(color: Colors.black)),
+          ),
+          CupertinoDialogAction(
+            onPressed: () => Navigator.pop(context),
+            isDefaultAction: true,
+            child: const Text('No', style: TextStyle(color: Colors.black)),
+          ),
+        ],
+      ),
+    );
+  }
+
   Future<void> _logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();
@@ -97,52 +120,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffECF5FD),
-      body: Column(
-        children: [
-          _myAppBar(MediaQuery.of(context).size.height),
-          const SizedBox(height: 25),
-          Row(
-            children: [
-              const SizedBox(width: 20),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {},
-                  child: TotalWalletBalance(
-                    context: context,
-                    walletAddress: walletAddress,
-                    totalBalance: walletBalance,
-                    crypto: ethBalance,
-                    percentage: percentageChange, // Pass the percentage change
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: const Color(0xffECF5FD),
+        body: Column(
+          children: [
+            _myAppBar(MediaQuery.of(context).size.height),
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                const SizedBox(width: 20),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: TotalWalletBalance(
+                      context: context,
+                      walletAddress: walletAddress,
+                      totalBalance: walletBalance,
+                      crypto: ethBalance,
+                      percentage: percentageChange, // Pass the percentage change
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      recentTransaction(
+                        iconUrl: 'https://icons.iconarchive.com/icons/cjdowner/cryptocurrency/128/Ethereum-icon.png',
+                        percentage: percentageChange,
+                        myCrypto: ethBalance,
+                        balance: walletBalance,
+                        profit: percentageChange >= 0
+                            ? "+\$${(currentEthPrice * percentageChange / 100).toStringAsFixed(2)}"
+                            : "-\$${(currentEthPrice * percentageChange / 100).toStringAsFixed(2)}",
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    recentTransaction(
-                      iconUrl: 'https://icons.iconarchive.com/icons/cjdowner/cryptocurrency/128/Ethereum-icon.png',
-                      percentage: percentageChange,
-                      myCrypto: ethBalance,
-                      balance: walletBalance,
-                      profit: percentageChange >= 0
-                          ? "+\$${(currentEthPrice * percentageChange / 100).toStringAsFixed(2)}"
-                          : "-\$${(currentEthPrice * percentageChange / 100).toStringAsFixed(2)}",
-                    ),
-                  ],
-                ),
-              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -156,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: _logout,
+            onTap: showAlertDialog,
             child: const Icon(
               Icons.logout,
               color: Colors.black87,
